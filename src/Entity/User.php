@@ -40,6 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
+        // Mise en commentaire des param du constructeur
         $this->articles = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
