@@ -14,7 +14,7 @@
     This friendly message is coming from:
     <ul>
         {% for art in Allarticles %}
-          <li>{{ art.TitreArticle }}</li>
+          <li><a href="/OneArticles/{{art.id}}">{{ art.TitreArticle }}</a></li>
         {% endfor %}
     </ul>
 </div>
