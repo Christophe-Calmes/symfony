@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
       // Création de 20 compte user,
       // 2 à 5 articles par compte et 5 à 8 commentaires par article.
       // Paramètres :
-      $userFake = 'Chris00';
+      $userFake = 'chris';
       $clearPassWord = '404';
       $arrayRole = ['ROLE_USER', 'ROLE_ADMIN'];
         // Ajout d'utilisateur + Articles + Commentaires
@@ -68,7 +68,7 @@ class AppFixtures extends Fixture
                   }
                 $manager->persist($User);
                 // dd($manager);
-                $manager->flush();
+              $manager->flush();
           }
     }
 }
