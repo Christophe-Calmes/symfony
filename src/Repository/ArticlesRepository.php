@@ -38,6 +38,16 @@ class ArticlesRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+      // Turc qui marche mais petite route.
+      // public function getLastArticle(): array
+      // {
+      //           return $this->createQueryBuilder('c')
+      //           ->orderBy('c.id', 'DESC')
+      //           ->setMaxResults(1)
+      //           ->getQuery()
+      //           ->getResult()
+      //           ;
+      //   }
 
 //    /**
 //     * @return Articles[] Returns an array of Articles objects
