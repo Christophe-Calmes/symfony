@@ -13,10 +13,10 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(ArticlesRepository $lastArticle): Response
     {
-//  Model : findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
-        //$singleArticle = $lastArticle->findOneBy(array("id"=>"171"));
+      //  Model : findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
       //  $singleArticle = $lastArticle->getLastArticle();
-      // Truc qui marche Autoroute
+
+      // Truc qui marche de type Autoroute => Symfony
       $singleArticle = $lastArticle->findBy(array(),array('id'=>'DESC'),1);
         //dd($singleArticle);
         return $this->render('home/index.html.twig', [

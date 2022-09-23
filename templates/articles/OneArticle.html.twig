@@ -6,16 +6,28 @@
 </style>
 
 <div class="example-wrapper">
-<li><a href="/articles">Retour listes des articles</a></li>
     <ul>
       <h3>{{detailArticle.TitreArticle}}</h3>
-        <h4>{{detailArticle.dateArticle | date('Y-m-d')}}</h4>
-          <h5>{{detailArticle.User.userName}}</h5>
-            <article>
-              {{detailArticle.TextArticle}}
+        <h4>Le {{detailArticle.dateArticle | date('d-m-Y')}}</h4>
+          <article>
+                {{detailArticle.TextArticle}}
+                <br />
+                <strong>Auteur {{detailArticle.User.userName}}</strong>
                 <br />
                 <strong>Nombre de Like : {{detailArticle.LikeArticle}}</strong>
-            </article>
+          </article>
     </ul>
+<ul>
+  <li>Les commentaires</li>
+  {% for index in Comments %}
+    <li>
+      <ul>
+        <li>Auteur : {{index.Auteur.userName}}</li>
+        <li>{{index.textComments}}</li>
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+
 </div>
 {% endblock %}

@@ -6,8 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// Utilisation de l'entity Articles
+// Utilisation de la repository Articles
 use App\Repository\ArticlesRepository;
+// Utilisation  de la repository Comments
+use App\Repository\CommentsRepository;
 
 
 class ArticlesController extends AbstractController
@@ -23,12 +25,20 @@ class ArticlesController extends AbstractController
         ]);
     }
     #[Route('/OneArticles/{idArticle}', name: 'app_OneArticle')]
-    public function OneArticle(ArticlesRepository $OneArticle, $idArticle): Response
+    public function OneArticle(
+      ArticlesRepository $OneArticle, $idArticle,
+      CommentsRepository $allComments
+    ): Response
     {
-      // Récupérer un article
+        // Récupérer un article
         $detailArticle = $OneArticle->find($idArticle);
+        $CommentaireArticle = $idArticle;
+        // Récupération des commentaires
+        $allCommentsArticle = $allComments->findBy(array('CommentaireArticle'=>$idArticle, 'valideComments' => 1));
+
         return $this->render('articles/OneArticle.html.twig', [
-            'controller_name' => 'ArticlesController', 'detailArticle' => $detailArticle
+            'controller_name' => 'ArticlesController', 'detailArticle' => $detailArticle,
+            'Comments' => $allCommentsArticle
         ]);
     }
 }
