@@ -20,7 +20,8 @@ class HomeController extends AbstractController
       $singleArticle = $lastArticle->findBy(array(),array('id'=>'DESC'),1);
         //dd($singleArticle);
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController', 'Article' => $singleArticle
+            'controller_name' => 'HomeController',
+            'Article' => $singleArticle
         ]);
     }
 }
