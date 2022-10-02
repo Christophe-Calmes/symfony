@@ -32,14 +32,14 @@ class AppFixtures extends Fixture
       $clearPassWord = '404';
       $arrayRole = ['ROLE_USER', 'ROLE_ADMIN'];
         // Ajout d'utilisateur + Articles + Commentaires
-          for ($i=0; $i < 20 ; $i++) {
+          for ($i=0; $i < 5 ; $i++) {
               $User = new User();
               $User->setUserName($userFake.$i);
               $User->setEmail('fake'.$i.'@gmail.com');
               $User->setPassword($this->hasher->hashPassword($User, $clearPassWord));
               // setRoles attent un tableau donc array($tableau)
               $User->setRoles(array($arrayRole[0]));
-              for ($k=0; $k <rand(2, 5) ; $k++) {
+              for ($k=0; $k < 2 ; $k++) {
                     $addArticle = new Articles;
                     $createdat = new DateTimeImmutable();
                     $addArticle->setUser($User);
@@ -47,17 +47,17 @@ class AppFixtures extends Fixture
                     // Définition des paramètres des articles.
                     $texteArticle = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     In casus belli civi pacem para bellum.';
-                      for ($j=0; $j < rand(5,8) ; $j++) {
+                      for ($j=0; $j <rand(1,3) ; $j++) {
                         $texteArticle = $texteArticle.$texteArticle;
                       }
                     $addArticle->setTextArticle($texteArticle);
                     // Vidage de la string texteArticle à la fin de la boucle.
                     $texteArticle = '';
-                    $addArticle->setLikeArticle(rand(10,900));
+                    $addArticle->setLikeArticle(rand(10,60));
                     $addArticle->setDateArticle($createdat);
                     $addArticle->setValideArticle(1);
                     $manager->persist($addArticle);
-                      for ($l=0; $l <3 ; $l++) {
+                      for ($l=0; $l <2 ; $l++) {
                           $addCommentaire = new Comments();
                           $addCommentaire->setAuteur($User);
                           $addCommentaire->setCommentaireArticle($addArticle);
